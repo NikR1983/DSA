@@ -5,7 +5,7 @@ class Program
 {
     static void Main(string[] args)
     {
-       foreach (int i in pair_sum_sorted_array(new List<int> { 1}, 6))
+       foreach (int i in pair_sum_sorted_array(new List<int> { 1,2,3,4,10}, 7))
         {
             Console.WriteLine(i);
         }
@@ -13,14 +13,14 @@ class Program
        Console.ReadKey();
     }
 
+    /// <summary>
+    /// Given a sorted array of integers and a target sum, this function finds a pair of numbers in the array that add up to the target sum.
     public static List<int> pair_sum_sorted_array(List<int> numbers, int target)
     {
-        // Write your code here.
-        List<int> sol = new List<int>();
 
         if (numbers == null || numbers.Count < 2)
         {
-            return sol;
+            return new List<int>();
         }
 
         int left = 0;
@@ -31,9 +31,7 @@ class Program
             int currentSum = numbers[left] + numbers[right];
             if (currentSum == target)
             {
-                sol.Add(numbers[left]);
-                sol.Add(numbers[right]);
-                return sol;
+                return new List<int> { numbers[left], numbers[right] }; //return pair of numbers that add up to target
             }
             else if (currentSum < target)
             {
@@ -45,6 +43,6 @@ class Program
             }
         }
 
-        return sol;
+        return new List<int>(); ;
     }
 }
